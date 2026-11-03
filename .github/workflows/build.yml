@@ -1,0 +1,36 @@
+# Builds the guide and every example on each push and pull request, and fails unless every deck ends with
+# "Checks: clean". The built guide and contact sheets are kept as an artifact to look at.
+name: Build and check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      DECK_BRAND: 'off'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx playwright-core install --with-deps chromium
+      - name: Guide
+        run: node src/build.mjs --deck specimens --no-pdf --strict && node src/build.mjs --deck guide --strict
+      - name: Examples
+        run: npm run examples
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: decks
+          path: |
+            out/*.pdf
+            out/*-contact.png
+            out/*-checks.txt
+          retention-days: 7

@@ -1,0 +1,92 @@
+// Example: a short study in the house style. Riverside clinic's front desk sends each patient to a nurse, a short
+// doctor's visit or a long one, and a short form at the desk decides which. Six slides, one house design each:
+// fork-cover, sieve, flow-bands, dumbbell, ladders, launch. Every name and number here is made up.
+// Build: node src/build.mjs --deck front-desk
+const SAMPLE = 'Sample data, made up for this example';
+const SPEAKER = { initials: 'YN', name: 'Your Name', role: 'Riverside clinic' };
+
+export default {
+	title: 'A short form sends patients to the right room',
+	file: 'front-desk',
+	ref: 'Riverside clinic  \u00b7  Front desk pilot  \u00b7  Nov 2026',
+	wordBudget: 18,
+	slides: [
+		{ id: 'cover', layout: 'fork-cover', eyebrow: 'Riverside clinic  \u00b7  Pilot',
+			title: 'A short form at the desk, the right room first',
+			sub: 'What we tried, and why the front desk should care.',
+			speaker: SPEAKER,
+			pills: [{ text: 'Pilot, two clinics', tone: 'orange', icon: 'beaker' }],
+			start: { icon: 'personWalk' },
+			node: { icon: 'form', label: 'One short form' },
+			ends: [
+				{ title: 'Doctor', sub: 'long visit', icon: 'heart', tone: 'purple' },
+				{ title: 'Doctor', sub: 'short visit', icon: 'heart', tone: 'purple' },
+				{ title: 'Nurse', sub: 'same day', icon: 'people', tone: 'neutral' },
+			],
+			notes: 'A short report on a pilot at two Riverside clinics. Every patient fills in one short form at the front desk, which decides whether a nurse can see them or a doctor should, and for how long. The picture on the right is that route. All numbers in this deck are sample data.' },
+		{ id: 'catch', layout: 'sieve', eyebrow: 'Patients who need a doctor', title: 'Today more than half wait for the wrong room',
+			kicker: '100 patients who needed a doctor',
+			panels: [
+				{ name: 'Today', value: 42, big: '42%', label: 'seen first', tone: 'red' },
+				{ name: 'Short form', value: 88, big: '88%', label: 'seen first', tone: 'green' },
+			],
+			caught: { title: 'Straight to a doctor', icon: 'checkCircle' },
+			missed: { title: 'Sent to the nurse first', icon: 'arrowDown' },
+			clicks: [
+				{ caption: 'Today: 58 of 100 see the nurse first', say: 'Today, more than half of the patients who need a doctor see the nurse first.' },
+				{ caption: 'The short form: 12 of 100', say: 'With the form, twelve do.' },
+			],
+			sources: [SAMPLE],
+			notes: 'Patients who needed a doctor are the ones a doctor marked afterwards, on 900 visits from the pilot. Each dot is one patient in a hundred.' },
+		{ id: 'how', layout: 'flow-bands', eyebrow: 'How it works', title: 'One form, then two quick decisions',
+			kicker: 'Band width: share of patients',
+			source: { title: 'Patient', icon: 'personWalk' },
+			node: { title: 'Short form', sub: '8 questions', icon: 'form', marks: 8 },
+			gates: [{ title: 'Needs a doctor?', yes: 'yes', no: 'no' }, { title: 'Short visit enough?', yes: 'yes', no: 'no' }],
+			outcomes: [{ title: 'Doctor\nshort visit', share: 38 }, { title: 'Doctor\nlong visit', share: 19 }, { title: 'Nurse', share: 43 }],
+			clicks: [
+				{ caption: 'One form: 8 questions at the desk', say: 'Every patient answers the same eight questions.' },
+				{ caption: 'Decision 1: 43% see the nurse', say: 'If they need no doctor, the nurse sees them the same day.' },
+				{ caption: 'Decision 2: 38% get a short visit', say: 'Most of the rest only need a short visit.' },
+			],
+			sources: [SAMPLE],
+			notes: 'Shares are of all 900 pilot visits. The two decisions follow a printed chart the clinic\u2019s doctors wrote.' },
+		{ id: 'groups', layout: 'dumbbell', eyebrow: 'By reason for the visit', title: 'Better for all eight reasons people come in',
+			legend: { from: 'Today', to: 'Short form' },
+			rows: [
+				{ label: 'Chest pain', from: 48, to: 86, gain: '+38', hi: true },
+				{ label: 'Back pain', from: 55, to: 83, gain: '+28', hi: true },
+				{ label: 'Fever', from: 60, to: 81, gain: '+21', hi: true },
+				{ label: 'Rashes', from: 68, to: 79, gain: '+11' },
+				{ label: 'Sprains', from: 71, to: 80, gain: '+9', mark: true },
+				{ label: 'Coughs', from: 72, to: 78, gain: '+6' },
+				{ label: 'Check-ups', from: 75, to: 79, gain: '+4', mark: true },
+				{ label: 'Other', from: 78, to: 80, gain: '+2' },
+			],
+			mark: { icon: 'clock', text: 'Shorter waits than today only on these 2' },
+			axis: 'Right room first',
+			sources: [SAMPLE],
+			notes: 'Share of patients seen in the right room first, per reason for the visit, on visits after the form was written. The biggest gains are bold; the note under the chart is the honest caveat: on six reasons the wait is a little longer.' },
+		{ id: 'clinics', layout: 'ladders', eyebrow: 'Same form, every clinic', title: 'Every kind of clinic waits less',
+			rows: ['Nurse', 'Short', 'Long'],
+			columns: [
+				{ name: 'Village', rungs: ['nurse', 'short', null], value: '\u22129%' },
+				{ name: 'Town', rungs: ['nurse', 'short', 'long'], value: '\u221216%' },
+				{ name: 'Walk-in', rungs: ['nurse', 'short', 'long'], value: '\u221227%' },
+				{ name: 'Hospital', rungs: ['nurse', 'long', 'long + specialist'], value: '\u221220%' },
+			],
+			caption: 'Average wait vs today',
+			unused: 'not offered',
+			tag: { text: 'Pilot estimate', tone: 'orange', icon: 'beaker' },
+			sources: [SAMPLE],
+			notes: 'Each kind of clinic uses the same form and the same three rooms; they differ in who is on each step. Waits are estimated from the pilot, not measured everywhere.' },
+		{ id: 'next', layout: 'launch', bg: 'blue', eyebrow: 'Before every clinic uses it', title: 'Prove it on real days before it spreads',
+			steps: [
+				{ icon: 'form', title: 'Print the form', sub: 'one per patient' },
+				{ icon: 'beaker', title: 'Shadow week', sub: 'every clinic type' },
+				{ icon: 'people', title: 'Side by side', sub: 'two clinics, one month' },
+			],
+			pad: 'Every clinic',
+			notes: 'Three steps before every clinic uses it: print the form for every front desk, run a shadow week in every kind of clinic, then compare two clinics side by side for a month.' },
+	],
+};

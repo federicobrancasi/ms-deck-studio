@@ -1,0 +1,20 @@
+node_modules/
+build/
+out/
+.DS_Store
+# The Microsoft logo is not part of the repo (see README): drop the official one here.
+assets/brand/
+# Your own decks stay on your machine. Only the template and the README are shared.
+decks/*
+!decks/README.md
+!decks/_template.mjs
+# Local, project-specific designs (e.g. for one private deck): never committed.
+designs/local-*
+# Local assets for private decks: never committed.
+assets/local-*
+
+# Brand marks the repo may not redistribute (theme/logos/logos.mjs marks them local): drop your own copy.
+theme/logos/vscode.svg
+
+# The gallery website is built by CI (npm run site), not committed.
+site/

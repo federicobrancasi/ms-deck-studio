@@ -1,0 +1,16 @@
+[
+	{ "deck": "demo-talk", "world": "A team of agents", "blurb": "A hackathon demo talk: where the idea came from, how it works click by click, a live demo, real moments as chats." },
+	{ "deck": "new-terminal", "world": "A port", "blurb": "Four cargo lines move to a new terminal before the old quay closes: a ship of countable boxes, a lighthouse over hazards, a storm." },
+	{ "deck": "pet-studio-example", "world": "A pixel film set", "real": true, "blurb": "Films, reels, images and new moves of the VS Code pet, made by asking an agent in chat. Real sprites." },
+	{ "deck": "tasting-pass", "world": "A kitchen", "blurb": "A restaurant adds a tasting pass: a cook, a taster and a remake, all drawn from one chef in every pose." },
+	{ "deck": "daily-film", "world": "A cinema", "blurb": "Release notes that become a one-minute film: a projector, spotlights, a mixing desk, a locked vault." },
+	{ "deck": "chat-media", "world": "A chat with a voice and a pen", "real": true, "blurb": "Three VS Code pull requests: chat reads its answers aloud, generates images, and teaches the pet new moves." },
+	{ "deck": "agents-speed", "world": "A workbench of tagged parts", "real": true, "blurb": "Twelve small VS Code pull requests that make the Agents window quicker and VS Code faster." },
+	{ "deck": "freight-line", "world": "A railway", "blurb": "A freight dispatch office in three steps, each a new question: heavy or light, what the load needs, which journey." },
+	{ "deck": "switchboard", "world": "A switchboard", "blurb": "A hotel switchboard asks a few questions before patching each call to the right desk." },
+	{ "deck": "fitting-room", "world": "A tailor's rack", "blurb": "Pick the cheapest model whose skills cover what the request needs, like the cheapest jacket that fits." },
+	{ "deck": "green-channel", "world": "An airport customs hall", "blurb": "One quick scan checks every bag, then fixed rules decide: it goes through, or it is opened with you." },
+	{ "deck": "code-walkthroughs-example", "world": "A press and its screens", "real": true, "blurb": "One prompt turns a pull request into a video or deck, with its code grouped by intent, in the VS Code Agents window." },
+	{ "deck": "first-order", "world": "A bakery", "blurb": "A bakery's first recipe video, told in three tries: no flour, then a shutter, then filmed." },
+	{ "deck": "pr-videos", "world": "A studio", "blurb": "Tools that turn pull requests into narrated videos: a projector with the agent inside, a TV wall of tools." }
+]

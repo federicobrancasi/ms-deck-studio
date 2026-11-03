@@ -1,0 +1,147 @@
+// Metaphor designs: one slide per design plugin in designs/frame.mjs and designs/metaphors.mjs, filled with sample
+// content about Microsoft's fictional companies (Contoso, Fabrikam, Northwind Traders, Woodgrove Bank, Adventure Works,
+// Tailspin Toys). Every number on it is made up and says so. The section dividers are all drawn by 'divider-signpost'.
+// Build: node src/build.mjs --deck metaphors
+const SAMPLE = 'Sample data, made up for this example';
+
+const opening = {
+	id: 'opening', title: 'Opening', short: 'Opening',
+	slides: [
+		{ id: 'cover', layout: 'cover-signpost', bg: 'blue', eyebrow: 'Microsoft deck studio  \u00b7  Metaphor designs',
+			title: 'One idea,\none object',
+			sub: 'Fifteen pictures drawn in code, each one filled from plain slide fields.',
+			speaker: { initials: 'FB', name: 'Federico Brancasi', role: 'Microsoft' },
+			pills: [{ text: 'Example deck', tone: 'blue', icon: 'slideText', white: true }],
+			card: { label: 'In this deck', big: '15 designs', sub: 'in three parts', rows: [
+				{ title: 'Opening', note: '2 slides' },
+				{ title: 'Know your customers', note: '5 slides' },
+				{ title: 'Keep it safe', note: '5 slides' },
+				{ title: 'Work with people', note: '2 slides' },
+			] },
+			notes: 'The cover is the design cover-signpost: a hiking signpost with one plate per part of the agenda. It takes the same fields as the built-in title card, and rows: \'blocks\' computes the plates from the deck.' },
+		{ id: 'bridge', layout: 'bridge', eyebrow: 'Contoso  \u00b7  Release day',
+			text: 'Building a feature now takes {{blue|minutes}}.\nKnowing it will hold takes {{orange|trust}}.',
+			built: 'Built in minutes', ask: 'Will it hold?',
+			notes: 'The design bridge opens a talk on its theme: something was built across the gorge in no time, and the builder waits on the far side. You stand at the near end, and the weight-limit sign has no number on it yet.' },
+	],
+};
+
+const customers = {
+	id: 'customers', number: '01', title: 'Know your customers', short: 'Customers',
+	slides: [
+		{ id: 'customers-divider', layout: 'section', number: '01', eyebrow: 'Part 1  \u00b7  Northwind Traders  \u00b7  7 minutes',
+			title: 'Know your customers', sub: 'Five pictures for work to show, numbers to compare, a name and a scale.',
+			chips: [{ icon: 'image', text: 'Work' }, { icon: 'chart', text: 'Numbers' }, { icon: 'gauge', text: 'Levels' }],
+			notes: 'This deck sets divider: \'divider-signpost\', so every section divider is drawn as a hiking sign. The number, "Part N" and the minutes are computed by the build, and the trail along the bottom shows where we are.' },
+		{ id: 'gallery', layout: 'gallery-wall', eyebrow: 'Adventure Works  \u00b7  Spring catalogue', title: 'Five launches, one season',
+			items: [
+				{ kind: 'website', caption: 'Trail store', sub: 'website', placeholder: 'Your screenshot here' },
+				{ kind: 'video', caption: 'Summit film', sub: 'video' },
+				{ kind: 'cad', caption: 'Tent frame', sub: '3D model' },
+				{ kind: 'svg', caption: 'New badges', sub: 'icons' },
+				{ kind: 'motion', caption: 'Map intro', sub: 'animation' },
+			],
+			notes: 'The design gallery-wall hangs up to five works: the first one in the middle. Give each item a src in assets/ to show a picture; without one, the frame shows a placeholder with the icon of its kind.' },
+		{ id: 'roadsign', layout: 'roadsign', eyebrow: 'Tailspin Toys  \u00b7  Holiday season', title: 'Orders fell where checkout got slower',
+			big: { change: '\u221212%', plate: 'Slow checkout', sub: 'more than three steps' },
+			small: { change: '+8%', plate: 'Fast checkout' },
+			kicker: 'Online orders  \u00b7  October to December',
+			lines: [{ text: '**Slow checkout:** fewer orders', tone: 'red' }, { text: '**Fast checkout:** steady growth', tone: 'green' }],
+			pill: { text: 'Cut a step, not a feature', icon: 'lightbulb', tone: 'blue' },
+			sources: [SAMPLE],
+			notes: 'The design roadsign shows one change as a warning sign: the big sign is the case that matters, the small one behind it the comparison. The wedge on each sign shows which way the road goes.' },
+		{ id: 'nametag', layout: 'nametag', bg: 'dark', eyebrow: 'Fabrikam  \u00b7  A word for it',
+			word: 'zombie',
+			sense: { label: 'What we mean by it', text: 'A project nobody uses, but nobody dares to switch off.' },
+			badge: { icon: 'trophy', title: 'Word of the year', sub: 'Fabrikam staff survey' },
+			sources: [SAMPLE],
+			notes: 'The design nametag gives a pattern a name. Keep the word short, one word of up to about eight letters, so the marker lettering stays big. It is made for a dark page.' },
+		{ id: 'donut', layout: 'donut', eyebrow: 'Woodgrove Bank  \u00b7  Mobile app', title: 'Most support calls start with one screen',
+			value: '28%', label: 'of support calls are about card payments', part: 0.28, tone: 'purple',
+			inner: { value: '4%', label: 'are about a lost card', part: 0.04 },
+			center: { icon: 'wallet', text: 'Woodgrove' },
+			sources: [SAMPLE],
+			notes: 'The design donut shows one share of a whole, and a smaller share inside it. Keep part under about a third, so the leaders run straight to the numbers.' },
+		{ id: 'thermometer', layout: 'thermometer', eyebrow: 'Contoso  \u00b7  Change reviews', title: 'Match the review to the risk',
+			labels: ['The change', 'The review'],
+			levels: [
+				{ left: { icon: 'paint', text: 'A new colour' }, right: { icon: 'person', text: 'One quick look' } },
+				{ left: { icon: 'layers', text: 'A new feature' }, right: { icon: 'people', text: 'A team review' } },
+				{ left: { icon: 'money', text: 'Payments code' }, right: { icon: 'shieldLock', text: 'Security sign-off' } },
+			],
+			notes: 'The design thermometer lists levels from cool to hot, bottom to top: what is at stake on the left, what it needs on the right.' },
+	],
+};
+
+const safety = {
+	id: 'safety', number: '02', title: 'Keep it safe', short: 'Safety',
+	slides: [
+		{ id: 'safety-divider', layout: 'section', number: '02', eyebrow: 'Part 2  \u00b7  Woodgrove Bank  \u00b7  7 minutes',
+			title: 'Keep it safe', sub: 'Walls instead of advice, checks before shipping, and keys that open one door each.',
+			chips: [{ icon: 'handStop', text: 'Walls' }, { icon: 'checklist', text: 'Checks' }, { icon: 'key', text: 'Keys' }],
+			notes: 'The second section divider: the trail now shows the first part as walked and this one as here.' },
+		{ id: 'gate', layout: 'gate', eyebrow: 'Woodgrove Bank  \u00b7  Production data', title: 'A note on the wall does not stop a script',
+			note: 'Please don\u2019t touch live data.',
+			open: { label: 'advice', sub: 'it walks right past' },
+			closed: { label: 'a wall', sub: 'it can\u2019t open the gate', text: 'Test scripts get **no access** to live accounts.' },
+			notes: 'The design gate draws the same staircase twice: a polite note on the left, a stair gate screwed in on the right. Use it for the difference between asking and enforcing.' },
+		{ id: 'glasses', layout: 'glasses', eyebrow: 'Fabrikam  \u00b7  Release notes', title: 'Read it as a customer before sending',
+			kicker: 'Through a customer\u2019s eyes',
+			left: { label: 'First draft', text: 'Fixed the {{orange|FB bug}} in the {{orange|new flow}}.' },
+			right: { label: 'Rewritten', text: 'Invoices no longer show up twice in your account.' },
+			prompt: { who: 'You', text: 'Rewrite it for someone who never saw the ticket.' },
+			notes: 'The design glasses puts a draft and its rewrite side by side. Mark the words only the writer understands with {{orange|...}}: they get a wavy line and a question mark.' },
+		{ id: 'gears', layout: 'gears', bg: 'blue', eyebrow: 'Tailspin Toys  \u00b7  Release checklist', title: 'Four checks before a release ships',
+			gears: [
+				{ icon: 'chat', title: 'Explain it', sub: 'in one sentence' },
+				{ icon: 'checklist', title: 'Test it', sub: 'on a clean machine' },
+				{ icon: 'warning', title: 'Break it', sub: 'try the worst case' },
+				{ icon: 'people', title: 'Fresh eyes', sub: 'one new reviewer' },
+			],
+			accept: { title: 'Ship' },
+			notes: 'The design gears meshes two to four checks with one bigger gear at the end: it only turns when every check does. It is made for a blue page.' },
+		{ id: 'keyring', layout: 'keyring', eyebrow: 'Contoso  \u00b7  Access keys', title: 'Every key opens a different door',
+			keys: [
+				{ name: 'Public key', text: 'pk_live_\u2026', title: 'Fine in the page', sub: 'opens the front door', tone: 'green' },
+				{ name: 'Secret key', text: 'sk_live_\u2026', title: 'Server only', sub: 'opens every door', tone: 'blue' },
+				{ name: 'Admin key', text: 'adm_\u2026', title: 'Vault only', sub: 'changes the locks', tone: 'purple' },
+				{ name: 'Leaked key', title: 'Leaked? Replace it.', tone: 'red', broken: true, chips: ['Git', 'chat', 'screenshot'] },
+			],
+			notes: 'The design keyring hangs one key per credential or access level. A key with broken: true is snapped in two, with chips for where it leaked.' },
+		{ id: 'metro', layout: 'metro', eyebrow: 'Northwind Traders  \u00b7  Order flow', title: 'A failed payment takes the long way round',
+			start: { title: 'Order placed', icon: 'cart' },
+			junction: { title: 'Payment failed?' },
+			end: { title: 'Order shipped', icon: 'box' },
+			loop: [{ title: 'Retry the card', sub: 'once, an hour later' }, { title: 'Email the customer', sub: 'with a pay link' }],
+			then: 'then',
+			notes: 'The design metro draws a decision as a metro map: the straight green line is the usual way, the orange loop the detour, and both end at the same terminus.' },
+	],
+};
+
+const people = {
+	id: 'people', number: '03', title: 'Work with people', short: 'People',
+	slides: [
+		{ id: 'people-divider', layout: 'section', number: '03', eyebrow: 'Part 3  \u00b7  Adventure Works  \u00b7  3 minutes',
+			title: 'Work with people', sub: 'Many roles in one small team, and habits worth letting go of.',
+			chips: [{ icon: 'team', text: 'Roles' }, { icon: 'history', text: 'Habits' }, { icon: 'sparkle', text: 'Change' }],
+			notes: 'The last section divider: the trail shows the first two parts as walked.' },
+		{ id: 'coatstand', layout: 'coatstand', eyebrow: 'Adventure Works  \u00b7  Small teams', title: 'One person, many hats',
+			text: 'In a team of five,\neveryone wears\nmore than\none hat.',
+			who: 'A product lead at Adventure Works',
+			hats: [{ kind: 'bowler', label: 'Business' }, { kind: 'captain', label: 'Product' }, { kind: 'beret', label: 'Design' }, { kind: 'hardhat', label: 'Engineering' }],
+			notes: 'The design coatstand hangs four hats, one role each, on a bentwood stand. The text\'s first line sits level with the upper labels; set quote: false for a plain statement.' },
+		{ id: 'balloon', layout: 'balloon', bg: 'blue', eyebrow: 'Tailspin Toys  \u00b7  Team retrospective', title: 'Drop what slows you down',
+			text: 'We shipped faster the month we stopped doing things just because we always had.',
+			who: { name: 'Tailspin Toys', role: 'Release team' },
+			bags: ['Weekly\nstatus deck', 'Manual\nreleases'],
+			notes: 'The design balloon rises as it cuts two sandbags loose: write a habit to drop on each. It is made for a blue page.' },
+	],
+};
+
+export default {
+	title: 'Metaphor designs',
+	ref: 'Microsoft deck studio  \u00b7  Metaphor designs',
+	file: 'metaphors',
+	divider: 'divider-signpost',
+	sections: [opening, customers, safety, people],
+};
